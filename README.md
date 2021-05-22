@@ -8,6 +8,10 @@ to another path of this bucket.
 
 ## How to Run
 
+# Credentials
+
+Add a file named config.yaml inside of resources and follow the structure of example-config.yaml
+
 # Docker
 
 > Todo

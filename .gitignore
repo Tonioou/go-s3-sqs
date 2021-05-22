@@ -1,5 +1,5 @@
 .vscode
 
-config.yaml
+resources/config.yaml
 
 main.exe

@@ -12,7 +12,7 @@ type Config struct {
 }
 
 func NewConfig() *Config {
-	config, err := loadConfig(".")
+	config, err := loadConfig("./resources")
 	if err != nil {
 		fmt.Printf("Fatal error config file: %s \n", err)
 		//panic("Cannot found config file")
