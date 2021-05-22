@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+    app:
+        build: 
+            context: ../
+            dockerfile: build/Dockerfile
+        image: go-s3-sqs:latest
+        ports: 
+            - "8080:8080"
