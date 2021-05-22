@@ -22,8 +22,8 @@ func PoolMessages() {
 	if err != nil {
 		fmt.Printf("Cannot get queue url", err)
 	}
-	getMessages(urlResult, svc)
-	//go func() {  }()
+	//getMessages(urlResult, svc)
+	go func() { getMessages(urlResult, svc) }()
 
 }
 
@@ -44,7 +44,7 @@ func getMessages(queueUrl *sqs.GetQueueUrlOutput, svc *sqs.SQS) {
 			aws.String(sqs.QueueAttributeNameAll),
 		},
 		QueueUrl:            queueUrl.QueueUrl,
-		MaxNumberOfMessages: aws.Int64(1),
+		MaxNumberOfMessages: aws.Int64(10),
 		VisibilityTimeout:   getTimeout(),
 	})
 
