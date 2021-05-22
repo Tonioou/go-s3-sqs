@@ -10,7 +10,8 @@ to another path of this bucket.
 
 # Credentials
 
-Add a file named config.yaml inside of resources and follow the structure of example-config.yaml
+You must have your credentials configured you can do that using aws cli.
+[AWS CLI](https://aws.amazon.com/pt/cli/)
 
 # Docker
 
