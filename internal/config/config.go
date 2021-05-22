@@ -7,17 +7,21 @@ import (
 )
 
 type Config struct {
-	AccessKey string
-	SecretKey string
+	AwsConfig AwsConfiguration
 }
 
-func NewConfig() *Config {
-	config, err := loadConfig("./resources")
+type AwsConfiguration struct {
+	AccessKey string
+	SecretKey string
+	Region    string
+}
+
+func NewConfig() {
+	_, err := loadConfig("./resources")
 	if err != nil {
-		fmt.Printf("Fatal error config file: %s \n", err)
-		//panic("Cannot found config file")
+		fmt.Errorf("Cannot found config file", err)
+		panic("Cannot found config file")
 	}
-	return &config
 }
 
 func loadConfig(path string) (Config, error) {
@@ -32,9 +36,16 @@ func loadConfig(path string) (Config, error) {
 		return Config{}, err
 	}
 
-	config := Config{
-		AccessKey: viper.GetString("AWS.AccessKey"),
-		SecretKey: viper.GetString("AWS.SecretKey"),
+	config := GetConfiguration()
+	return *config, nil
+}
+
+func GetConfiguration() *Config {
+	return &Config{
+		AwsConfig: AwsConfiguration{
+			AccessKey: viper.GetString("AWS.AccessKey"),
+			SecretKey: viper.GetString("AWS.SecretKey"),
+			Region:    viper.GetString("AWS.Region"),
+		},
 	}
-	return config, err
 }

@@ -1,3 +1,4 @@
 AWS:
     AccessKey : "AccessKey"
     SecretKey : "SecretKey"
+    Region    : "us-east-1"
